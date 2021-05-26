@@ -13,8 +13,8 @@ import { environment } from 'src/environments/environment';
 export class SubResistorComponent implements OnInit {
   products: ProductModelServer[] = [];
   prod: string;
-  categoris;
-  subCategories;
+  categoris
+  subCategories
   filter_field: string;
   serverURL2 = environment.SERVER_URL2;
 
@@ -22,7 +22,7 @@ export class SubResistorComponent implements OnInit {
     private cartService: CartService,
     private route: ActivatedRoute) {  
       this.route.params.subscribe(data => {
-        this.prod = data.subResistor;
+        this.prod = data.subResistor
       });
     }
 
