@@ -10,6 +10,8 @@ export const environment = {
 
 // mpesa/index.php?mpesa=true&phone=254726159307&amount=1&id=708
 //ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress
+
+//git push origin main -f
   
 };
 
