@@ -1,0 +1,91 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+           <hr>
+        </div>
+
+    </div>
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-md-3 side-menu-option-display">
+            <div class="card">
+                <div class="card-header">
+            <h6><span class="fa fa-user"></span> My Ekasline Account</h6>
+                </div>
+                <div class="card-body">
+                    <button class="btn  main-side-menu"><i class="fa fa-shopping-cart"></i> My Orders</button><br><br>
+                    <a routerLink="/user-payments/{{myUser.id}}"><button class="btn  main-side-menu"><i class="fa fa-money"></i> My Payments</button></a><br><br>
+                    <button class="btn  main-side-menu"><i class="fa fa-edit"></i> Pending Reviews</button><br><br>
+                    <button class="btn  main-side-menu"><i class="fa fa-credit-card"></i> Ekasline Credit</button><br><br>
+                    <button class="btn  main-side-menu"><i class="fa fa-cart-plus"></i> Saved Items</button><br><br>
+                    <button class="btn  main-side-menu"><i class="fa fa-eye-slash"></i> Recently Viewed</button><br><br>
+                    <hr>
+                    <button class="btn  main-side-menu"><i class="fa fa-list-alt"></i> My Details</button><br><br>
+                    <button class="btn  main-side-menu"><i class="fa fa-unlock-alt"></i> Change Password</button><br><br>
+                    <button class="btn  main-side-menu"><i class="fa fa-question-circle"></i> Ask for Help</button><br><br>
+                    <hr>
+                    <button class="btn btn-outline-info btn-sm my-2" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</button><br>
+
+                </div>
+          <!-- <img src="/assets/img/noimg.png" alt="" style="width: 150px;text-align: center;" class="img-rounded"><br>
+          <button class="btn btn-outline-info btn-sm my-2" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</button><br>
+          <b>Name: </b>{{details.fname + ' '+ details.lname}}<br>
+           <b> Email: </b> {{myUser.email}}<br>
+           <b>Phone:</b> {{details.phoneNumber}}<br>
+           <b>Home Country:</b> {{details.country}}<br>
+           <b>Home City</b>{{details.city}} -->
+           </div>
+        </div>
+        <div class="col-md-9">
+
+            <div class="card">
+                <div class="card-header">
+           <b>
+            <div class="dropdown menu-dropdown">
+                <button class="dropbtn">
+                  <i class="fa fa-bars"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a routerLink="/user-payments/{{myUser.id}}"><button class="btn  main-side-menu"><i class="fa fa-money"></i> My Payments</button></a>
+                  <a routerLink="/profile"><button class="btn  main-side-menu"><i class="fa fa-list-alt"></i> My Details</button></a>
+                  <a routerLink="/profile"><button class="btn  main-side-menu"><i class="fa fa-shopping-cart"></i> My Orders</button></a>
+                  <a routerLink="/profile"><button class="btn  main-side-menu"><i class="fa fa-unlock-alt"></i> Password</button></a>
+            
+                </div>
+                </div>   
+            <i class="fa fa-shopping-cart"></i> My Orders</b>
+           <b style="float: right;">
+            <a routerLink="/"><button class="btn btn-outline-info btn-sm"><i class="fa fa-cart-plus" aria-hidden="true"></i> Go To Shop</button></a>
+            <a routerLink="/checkout"><button class="btn btn-outline-danger btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Check Out</button></a><br>
+           </b>
+           <br>
+           </div>
+            <table class="table table-bordered table-responsive">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Order Number</th>
+                    <th>Amount Due</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+               </thead>
+               <tbody>
+                   <tr *ngFor="let o of userOrders">
+                       <td>{{o.date_placed}}</td>
+                       <td>{{o.id}}</td>
+                       <td>{{o.amount_due | currency: 'KES '}}</td>
+                       <td>
+                        <span [class]="o.status ? 'badge badge-success' : 'badge badge-secondary'">
+                           {{o.status ? 'Complete' : 'Pending'}}
+                           </span>
+                        </td>
+                       <td><a routerLink="../order-details/{{o.id}}"><button class="btn btn-outline-info btn-sm"> <i class="fa fa-eye-slash"></i> View</button></a></td>
+                   </tr>
+               </tbody>
+
+            </table>
+            </div>
+        </div>
+    </div>
+</div>

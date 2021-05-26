@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+      <div class="card text-center">
+        <h1 class="display-3">Thank You!</h1>
+        <p class="lead"><strong>Please check your email</strong> for order confirmation{{products.length}}</p>
+        <hr>
+
+
+        
+          <div class="row">
+            <div class="col-md-4">
+              <i class="fa fa-first-order"></i> Order Number : <strong>{{orderId}}</strong>
+            </div>
+            <div class="col-md-4">
+              <i class="fa fa-money-bill"></i> Amount Due: <strong>{{cartTotal | currency:'KES '}}</strong>
+            </div>
+            <div class="col-md-4">
+              <a routerLink="/order-payment/{{orderId}}"><button class="btn"><img src="assets/img/lipa.png" alt=""></button></a>
+            </div>
+          </div>
+        
+      </div>
+      </div>
+      <div class="card-bod">
+        <div class="card">
+     
+          <h4 class="text-uppercase"><i class="fa fa-align-justify"></i> Invoice</h4>
+  
+      <table class="table table-bordered" id="contentToConvert">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Product Description</th>
+          <th>QTY</th>
+          <th>Unit Price</th>
+          <th>Amount</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of viewOrders let i=index">
+          <td>
+            {{i+1}}
+          </td>
+          <td>
+          <img src="{{serverURL2+'/'+p.product.image}}" alt="{{p.product.name}}" class="img-thumbnail" width="50px" height="50px">
+          {{p.product.name}}
+          </td>
+          <td>{{p.numInCart}}</td>
+          <td>{{p.product.price | currency:'KES '}}</td>
+          <td>{{p.product.price*p.numInCart | currency:'KES '}}</td>
+
+        </tr>
+
+        <tr class="border-0">
+          <td></td>
+          <td style="border: none;"></td>
+          <td></td>
+          <td><b>TOTAL</b></td>
+          <td>{{cartTotal | currency:'KES '}}</td>
+
+        </tr>
+        </tbody>
+      </table>
+      </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-outline-danger" (click)="downloadInvoice()"><i class="fa fa-file"></i> Download Invoice</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

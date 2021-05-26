@@ -1,0 +1,122 @@
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>#Order Number {{orderNumber}} </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="card">
+                                <div class="card-header" style="background-color: antiquewhite;">
+                                    <h5 class="card-title">Order Details </h5>
+
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            Status: <span class="badge badge-info">Pending</span>
+
+                                        </div>
+                                        <div class="col-sm-6">
+                                            Balance: <span class="badge badge-secondary">{{orderDetails.amount_due-payMent.totals[0].total | currency:'KES '}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            Amount Due:  <span class="badge badge-danger">{{orderDetails.amount_due | currency:'KES '}}</span>
+
+                                        </div>
+                                        <div class="col-sm-6">
+                                           Amount Paid: <span class="badge badge-success">{{payMent.totals[0].total | currency:'KES '}}</span>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                           <hr>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        
+                                        <div class="col-sm-12">
+                                            <h5>Products Odered</h5>
+                                            <table class="table table-bordered table-responsive">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Image</th><th>Name</th><th>Qts</th><th>Price</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor = "let p of products.products">
+                                                        <td>
+                                                        <img src="{{serverURL+'/'+p.image}}" alt="{{p.name}}" class="card-img-top" style="cursor: pointer;width:50px;">
+                                                        </td>
+                                                        <td>{{p.name}}</td>
+                                                        <td>{{p.quantityOrdered}}</td>
+                                                        <td>{{p.price}}</td>
+
+                                                    </tr>
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                           <hr>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+<!--                                         
+                                          <button class="btn btn-outline-danger btn-sm">Download Receipts</button>
+                                          <button class="btn btn-outline-warning btn-sm">Download Delivery Notes</button> -->
+                                        
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card">
+                                <div class="card-header" style="background-color: antiquewhite;">
+                                <h5 class="card-title">Order Address </h5>
+                                </div>
+                                <div class="card-body">
+                                    <b>Customer Name:</b> {{userDetails.fname+' '+userDetails.lname}}<br>
+                                    <b>Phone Number:</b> {{userDetails.phoneNumber}}<br>
+                                    <b>Email Address:</b>{{userDetails.email}}<br>
+                                    <b>Country:</b>{{userDetails.country}}<br>
+                                    <b>County:</b>{{orderAddress.county_to_send}}<br>
+                                    <b>Sub County:</b>{{orderAddress.sub_county}}<br>
+                                    <b>City:</b>{{orderAddress.city}}<br>
+                                    <b>Postal Address:</b>{{orderAddress.postal_address}}<br>
+                                    <b>Coment: </b>{{orderAddress.description}}
+                                </div>
+                            </div>
+                            <br><br>
+                            <div class="card">
+                                <div class="card-header" style="background-color: antiquewhite;">
+                                    <h5 class="card-title">Downloads </h5>
+                                    </div>
+                                    <div class="card-body">
+                                 <button class="btn btn-outline-danger"><i class="fa fa-file"></i> Download Invoice</button>
+                                   </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+            
+               </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+

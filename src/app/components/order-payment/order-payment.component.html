@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <br><br>
+            <h6 style=" color:#24ADF3"><i class="fa fa-money" aria-hidden="true"></i> Please follow the steps below to complete payment of your order</h6>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+ </div>
+
+<div class="container">
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card" style="background-color: #F5F5F5;">
+            <div class="card-header">
+               <h4>Order Payment</h4>
+            </div>
+            <div class="card-body">
+                 <b>Order Owner: </b>{{name}}<br><br>
+                 <b>Mode of Payment: </b> Mpesa<br><br>
+                 <b>Amount Due: </b> {{cartTotal | currency:'KES '}}<br><br>
+                 <b>Order Number: </b> {{orderId}}<br><br>
+                 <b>Phone Number: </b>{{phone}}<br><br>
+                 <div class="alert alert-info" role="alert">
+                 <ol>
+                    <li><i class="fa fa-bars" aria-hidden="true"></i> Ensure you have access to mobile phone with number {{phone}}</li>    
+                 <li><i class="fa fa-bars" aria-hidden="true"></i> Ensure your Mpesa has enough money to clear {{cartTotal | currency:'KES '}}, then click 'pay now'</li>
+                 </ol>
+                 <br><br>
+                 </div>
+                 <div style="text-align: center;">
+                 <button class="btn btn-outline-warning" (click)="lipaNaMpesa()"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Pay Now</button><br><br>
+                 </div>
+
+                 <div id="notification-here" style="text-align: center;">
+                    
+                </div>
+            </div>
+        </div>
+        <br><br>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+</div>

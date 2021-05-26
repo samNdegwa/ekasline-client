@@ -1,0 +1,170 @@
+<!-- HEADER -->
+<header>
+  <!-- TOP HEADER -->
+  <div id="top-header">
+    <div class="container-fluid">
+      <ul class="header-links pull-left">
+        <li><a href="#"><i class="fa fa-phone"></i> +254724315581</a></li>
+        <li><a href="#"><i class="fa fa-envelope-o"></i> info@ekastech.com</a></li>
+        <li><a href="#"><i class="fa fa-envelope"></i> P.O BOX 3100-10140</a></li>
+        <li><a href="#"><i class="fa fa-map-marker"></i> Nyeri, Off Wang'ombe Waihura RD</a></li>
+      </ul>
+      <ul class="header-links pull-right">
+        <li><a href="#"><i class="fa fa-money"></i> KES</a></li>
+        <li><a routerLink="/profile"><i class="fa fa-user-o"></i>{{authState === false ? 'LOGIN' : 'My Account'}}</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- /TOP HEADER -->
+
+  <!-- MAIN HEADER -->
+  <div id="header">
+    <!-- container -->
+    <div class="container-fluid">
+      <!-- row -->
+      <div class="row">
+        <!-- LOGO -->
+        <div class="col-md-3">
+          <div class="header-logo">
+            <a routerLink="/" class="logo">
+              <img src="assets/img/logoo.PNG" alt="">
+            </a>
+          </div>
+        </div>
+        <!-- /LOGO -->
+
+        <!-- SEARCH BAR -->
+        <div class="col-md-6">
+          <div class="header-search">
+            <form #myform="ngForm">
+              <select class="input-select">
+                <option value="0">All Categories</option>
+                <option > Governors</option>
+                <option value="">Cables </option>
+                <option value="">Auto spare</option>
+                <option value="">Capacitors</option>
+                <option value="">Resistors</option>
+                <option value="">Connectors</option>
+                <option value="">Diodes</option>
+                <option value="">Crystals</option>
+                <option value="">Transistors</option>
+                <option value="">Interface </option>
+                <option value="">Processors</option>
+
+              </select>
+              <input class="input" type="input" placeholder="Search here"  [(ngModel)]="searchName" id="searchName" name="searchName" required="">
+              <button type="submit" class="search-btn" (click)="submitSearch(myform)">Search</button>
+            </form>
+          </div>
+        </div>
+        <!-- /SEARCH BAR -->
+
+        <!-- ACCOUNT -->
+        <div class="col-md-3 clearfix">
+          <div class="header-ctn">
+
+            <!-- Cart -->
+            <div class="dropdown">
+              
+              <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Your Cart</span>
+                <div class="qty">{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}}</div>
+              </a>
+              <div class="cart-dropdown">
+                <div class="cart-list" *ngIf="cartData.data[0].numInCart !== 0">
+                  <div class="product-widget" *ngFor="let c of cartData.data; let i=index">
+                    <div class="product-img">
+                      <img [src]="serverURL2+'/'+c.product ?.image" alt="{{c.product.name}}" width="20px;">
+
+                    </div>
+                    <div class="product-body">
+                      <h3 class="product-name"><a href="#">{{c.product.name}}</a></h3>
+                      <h4 class="product-price"><span class="qty">{{c.numInCart}} x</span>{{c.product.price | currency: 'KES '}}</h4>
+                    </div>
+                    <button class="delete"(click)="cartService.DeleteProductFromCart(i)" ><i class="fa fa-close"></i></button>
+                  </div>
+
+                </div>
+                <div class="cart-summary">
+                  <small>{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}} Item(s) selected</small>
+                  <h5>SUBTOTAL: {{cartTotal | currency: 'Kshs '}}</h5>
+                </div>
+                <div class="cart-btns">
+                  <a routerLink="/cart">View Cart</a>
+                  <a routerLink="/checkout">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <!-- /Cart -->
+
+            <!-- Wishlist -->
+            <div class="wish-list">
+              <a href="#">
+                <i class="fa fa-heart-o"></i>
+                <span>Your Wishlist</span>
+                <div class="qty">0</div>
+              </a>
+            </div>
+            <!-- /Wishlist -->
+
+            
+
+            <!-- Menu Toogle -->
+
+
+            <!-- <div class="menu-toggle">
+              <a href="#">
+                <i class="fa fa-bars"></i>
+                <span>Menu</span>
+              </a>
+            </div> -->
+
+            <div class="dropdown menu-dropdown" style="float:right;">
+              <button class="dropbtn">
+                <i class="fa fa-bars"></i> <span>Menu</span>
+              </button>
+              <div class="dropdown-content">
+                <a routerLink="/">All Products</a>
+                <a routerLink="/">Manufacturer</a>
+                <a routerLink="/">Popular Products</a>
+                <a routerLink="/">Deals</a>
+                <a routerLink="/">About EkasLine</a>
+                <a routerLink="/">Contact Us</a>
+              </div>
+              </div>
+
+            <!-- /Menu Toogle -->
+          </div>
+        </div>
+        <!-- /ACCOUNT -->
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </div>
+  <!-- /MAIN HEADER -->
+</header>
+<!-- /HEADER -->
+<!-- NAVIGATION -->
+<nav id="navigation">
+  <!-- container -->
+  <div class="container-fluid" style="background-color: azure;">
+    <!-- responsive-nav -->
+    <div id="responsive-nav">
+      <!-- NAV -->
+      <ul class="main-nav nav py-3"  style="font-size: 0.8em;">
+        <li><a routerLink="/">All Products <i class="fa fa-chevron-down" aria-hidden="true"></i></a></li>
+        <li><a routerLink="/">Manufacturer</a></li>
+        <li><a routerLink="/">Popular Products</a></li>
+        <li><a routerLink="/">Deals</a></li>
+        <li><a routerLink="/">About EkasLine</a></li>
+        <li><a routerLink="/">Contact Us</a></li>
+      </ul>
+      <!-- /NAV -->
+    </div>
+    <!-- /responsive-nav -->
+  </div>
+  <!-- /container -->
+</nav>
+<!-- /NAVIGATION -->

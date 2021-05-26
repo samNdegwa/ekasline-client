@@ -1,0 +1,81 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+           <hr>
+        </div>
+
+    </div>
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-md-3 side-menu-option-display">
+            <div class="card">
+                <div class="card-header">
+            <h6><span class="fa fa-user"></span> My Ekasline Account</h6>
+                </div>
+                <div class="card-body">
+                    <a routerLink="/profile"><button class="btn  main-side-menu"><i class="fa fa-shopping-cart"></i> My Orders</button></a><br><br>
+                    <button class="btn  main-side-menu"><i class="fa fa-money"></i> My Payments</button><br><br>
+                    <button class="btn  main-side-menu"><i class="fa fa-edit"></i> Pending Reviews</button><br><br>
+                    <button class="btn  main-side-menu"><i class="fa fa-credit-card"></i> Ekasline Credit</button><br><br>
+                    <button class="btn  main-side-menu"><i class="fa fa-cart-plus"></i> Saved Items</button><br><br>
+                    <button class="btn  main-side-menu"><i class="fa fa-eye-slash"></i> Recently Viewed</button><br><br>
+                    <hr>
+                    <button class="btn  main-side-menu"><i class="fa fa-list-alt"></i> My Details</button><br><br>
+                    <button class="btn  main-side-menu"><i class="fa fa-unlock-alt"></i> Change Password</button><br><br>
+                    <button class="btn  main-side-menu"><i class="fa fa-question-circle"></i> Ask for Help</button><br><br>
+                    <hr>
+                   
+
+                </div>
+        
+           </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+           <b>
+            <div class="dropdown menu-dropdown">
+                <button class="dropbtn">
+                  <i class="fa fa-bars"></i>
+                </button>
+                <div class="dropdown-content">
+                    
+                    <a routerLink="/user-payments/{{myUser.id}}"><button class="btn  main-side-menu"><i class="fa fa-money"></i> My Payments</button></a>
+                  <a routerLink="/profile"><button class="btn  main-side-menu"><i class="fa fa-list-alt"></i> My Details</button></a>
+                  <a routerLink="/profile"><button class="btn  main-side-menu"><i class="fa fa-shopping-cart"></i> My Orders</button></a>
+                  <a routerLink="/profile"><button class="btn  main-side-menu"><i class="fa fa-unlock-alt"></i> Password</button></a>
+            
+                </div>
+                </div>   
+            <i class="fa fa-money"></i> My Payments</b>
+           <b style="float: right;">
+            <a routerLink="/"><button class="btn btn-outline-info btn-sm"><i class="fa fa-cart-plus" aria-hidden="true"></i> Go To Shop</button></a>
+            <a routerLink="/checkout"><button class="btn btn-outline-danger btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Check Out</button></a><br>
+           </b>
+           <br>
+           </div>
+            <table class="table table-bordered table-responsive">
+                <thead>
+                <tr>
+                    <th>Reference</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Order Number</th>
+                    <th>Action</th>
+                </tr>
+               </thead>
+               <tbody>
+                   <tr *ngFor="let p of userPayments">
+                       <td>{{p.reference}}</td>
+                       <td>{{p.amount | currency: 'KES '}}</td>
+                       <td>{{p.created_date}}</td>
+                       <td>{{p.order_id}}</td>
+                       <td><button class="btn btn-outline-danger btn-sm"> <i class="fa fa-file"></i> Download Receipt</button></td>
+                   </tr>
+               </tbody>
+
+            </table>
+            </div>
+        </div>
+    </div>
+</div>

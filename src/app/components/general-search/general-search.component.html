@@ -1,0 +1,100 @@
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container-fluid">
+      <!-- row -->
+      <div class="row">
+  
+        <!-- section title -->
+        <div class="col-md-12">
+            <hr>
+            <div class="section-title" *ngIf="products.length < 1">
+              <h5 style="text-align: center;">No "{{prod}}" Related Products Found {{products.length}}</h5>
+              <h6 style="text-align: center;color: red;">{{products.length}} Result Found</h6>
+            </div>
+          <div class="section-title" *ngIf="products.length > 0">
+            <h5 style="text-align: center;">Products Related to "{{prod}}"</h5>
+            <h6 style="text-align: center;color: green;">{{products.length}} Results Found</h6>
+          </div>
+          
+          <hr>
+        </div>
+      </div>
+
+        <!-- /section title -->
+  
+        <!-- Products tab & slick -->
+        
+        <div class="col-md-12">
+          <h6><i class="fa fa-filter"></i> Select category you are looking for here</h6>
+            <div class="row">
+              <div class="col-md-3 col-sm-6" *ngFor="let sc of subCategories.sub_categories">
+                <div class="my-2 prod-highlight">
+                  <a routerLink="/product-search/{{prod}}/{{sc.name}}"><span style="color:#24ADF3">{{sc.name}}</span> (212)</a>
+                </div>
+              </div>
+            </div>
+            </div>
+            <hr>
+    
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <h5>Result : {{products.length}}</h5>
+          </div>
+          <div class="col-md-3">
+            <h5><input type="checkbox" name="smartFilter" value="smart" class="btn btn-primary" checked>
+            <label for="Smart"> Smart Filtering</label></h5>
+          </div>
+          <div class="col-md-4">
+
+          </div>
+          <div class="col-md-3">
+            <input type="text" class="form-control" onkeyup="filterTable()" name=" filter_field" id="search-input" placeholder="Filter within Results">
+          </div>
+        </div>
+        
+       <div class="row">
+           <div class="col-md-12" *ngIf="products.length > 0">
+            <br>
+            <div class="row">
+              <!-- ........................working here -->
+              <div class="col-md-3 col-sm-6" *ngFor="let p of products">
+                <div class="card my-2">
+                  <img src="{{serverURL2+'/'+p.image}}" alt="{{p.name}}" width="200px;" class="card-img-top" style="cursor: pointer;" (click)="selectProduct(p.id)">
+                  <div class="card-header">
+                    <div class="card-title">
+                      <p>{{p.name.substr(0,30)}} ...</p>
+    
+                    </div>
+                  </div>
+                  <!-- ................................. -->
+                  <div class="card-body">
+                    {{p.description.substr(0,25)}} ... <br>
+                    <span class="badge badge-warning">{{p.price | currency: 'KES '}}</span>
+    
+                  </div>
+    
+                  <div class="row d-flex justify-content-center border-primary my-3">
+                    <div class="col-md-6">
+                      <button class="btn btn-outline-primary btn-sm btn-block"
+                              [class.disabled]="p.quantity < 1"
+                              [class.btn-outline-danger]="p.quantity < 1"
+                               (click)="AddToCart(p.id)"
+                              >
+                        {{p.quantity < 1 ? "No Stock" : "Add To Cart" }}
+                      </button>
+                    </div>
+    
+                  </div>
+    
+                </div>
+              </div>
+            </div>
+           </div>
+
+       </div>  
+</div>
+    <!-- /container -->
+    
+  
