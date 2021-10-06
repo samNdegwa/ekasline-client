@@ -17,6 +17,8 @@ serverURL2 = environment.SERVER_URL2;
 page;
 total_products;
 total_pages;
+isLoading = true;
+toNextPage = false;
 
   constructor(private productService: ProductService,
               private  cartService: CartService,
@@ -28,10 +30,12 @@ total_pages;
       this.total_products = data;
       this.total_products = this.total_products;
       localStorage.setItem('pg',this.total_products);
-    })
+    })  
+    //document.getElementById('id-holders').innerHTML='<div class="spinner-grow" role="status"><span class="sr-only">Loading...</span></div>'; 
     this.productService.getAllProducts(0).subscribe((prods: ServerResponse) => {
       this.products = prods.products;
-      console.log(prods);
+      this.isLoading = false;
+      this.toNextPage = true;
     });
     
   }
